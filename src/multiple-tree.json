@@ -1,0 +1,187 @@
+[
+  {
+    "id": 101,
+    "parent": 100,
+    "droppable": true,
+    "text": "1. ANTONIO SELLER (Team A) Leader",
+    "data": []
+  },
+  {
+    "id": 102,
+    "parent": 101,
+    "droppable": true,
+    "text": "1-1 Usuario (Team A)",
+    "data": []
+  },
+  {
+    "id": 103,
+    "parent": 101,
+    "droppable": true,
+    "text": "1-2 Usuario (Team A)",
+    "data": []
+  },
+  {
+    "id": 104,
+    "parent": 101,
+    "droppable": true,
+    "text": "2 Rocco Legal team leader (Team A-1)",
+    "data": []
+  },
+  {
+    "id": 105,
+    "parent": 104,
+    "droppable": true,
+    "text": "2-1 LAWYER (Team A-1)",
+    "data": []
+  },
+  {
+    "id": 106,
+    "parent": 104,
+    "droppable": true,
+    "text": "2-2 LAWYER (Team A-1)",
+    "data": []
+  },
+  {
+    "id": 107,
+    "parent": 104,
+    "droppable": true,
+    "text": "2-3 LAWYER (Team A-1)",
+    "data": []
+  },
+  {
+    "id": 201,
+    "parent": 200,
+    "droppable": true,
+    "text": "1. CARLOS BUYER (Team B)",
+    "data": []
+  },
+  {
+    "id": 202,
+    "parent": 201,
+    "droppable": true,
+    "text": "1-1 Usuario (Team B)",
+    "data": []
+  },
+  {
+    "id": 203,
+    "parent": 201,
+    "droppable": true,
+    "text": "1-2 Usuario (Team B)",
+    "data": []
+  },
+  {
+    "id": 204,
+    "parent": 201,
+    "droppable": true,
+    "text": "2 Alejandra Legal team leader (Team B-1)",
+    "data": []
+  },
+  {
+    "id": 205,
+    "parent": 204,
+    "droppable": true,
+    "text": "2-1 LAWYER (Team B-1)",
+    "data": []
+  },
+  {
+    "id": 206,
+    "parent": 204,
+    "droppable": true,
+    "text": "2-2 lAWYER (Team B-1)",
+    "data": []
+  },
+  {
+    "id": 301,
+    "parent": 300,
+    "droppable": true,
+    "text": "LOI",
+    "data": []
+  },
+  {
+    "id": 302,
+    "parent": 300,
+    "droppable": true,
+    "text": "PSA",
+    "data": []
+  },
+  {
+    "id": 303,
+    "parent": 300,
+    "droppable": true,
+    "text": "Org Chart",
+    "data": []
+  },
+  {
+    "id": 304,
+    "parent": 300,
+    "droppable": true,
+    "text": "EIN 1",
+    "data": []
+  },
+  {
+    "id": 401,
+    "parent": 400,
+    "droppable": true,
+    "text": "$50k",
+    "data": [
+      {
+        "name": "1er Deposit"
+      }
+    ]
+  },
+  {
+    "id": 402,
+    "parent": 400,
+    "droppable": true,
+    "text": "$100k",
+    "data": [
+      {
+        "name": "2do Deposit"
+      }
+    ]
+  },
+  {
+    "id": 403,
+    "parent": 400,
+    "droppable": true,
+    "text": "50K",
+    "data": [
+      {
+        "name": "EXTENSION"
+      }
+    ]
+  },
+  {
+    "id": 404,
+    "parent": 400,
+    "droppable": true,
+    "text": "15M",
+    "data": [
+      {
+        "name": "PURCHASE"
+      }
+    ]
+  },
+  {
+    "id": 405,
+    "parent": 400,
+    "droppable": true,
+    "text": "7M",
+    "data": [
+      {
+        "name": "DEBT"
+      }
+    ]
+  },
+  {
+    "id": 406,
+    "parent": 400,
+    "droppable": true,
+    "text": "5M",
+    "data": [
+      {
+        "name": "EQUITY"
+      }
+    ]
+  }
+]

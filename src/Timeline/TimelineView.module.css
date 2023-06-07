@@ -1,0 +1,28 @@
+
+  /* Estilos para el elemento con la clase "treeRoot" */
+.treeRoot {
+  /* Establece el modelo de caja para incluir el relleno y el borde en el tamaño total */
+  box-sizing: border-box;
+  /* Establece la altura del elemento al 100% */
+  height: 100%;
+  /* Establece el relleno del elemento */
+  /* padding: 32px; */
+  /* Establecer la orientación horizontal del arbol */
+  display: flex;
+  /* flex-direction: column-reverse; */
+
+}
+
+/* Estilos para el elemento con la clase "draggingSource" */
+.draggingSource {
+  /* Establece la opacidad del elemento */
+  opacity: 0.3;
+}
+
+/* Estilos para el elemento con la clase "dropTarget" */
+.dropTarget {
+  /* Establece el color de fondo del elemento */
+  background-color: #8ee087;
+  content: var(--my-number);
+  
+}

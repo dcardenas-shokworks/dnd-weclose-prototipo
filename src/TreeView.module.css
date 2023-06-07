@@ -1,0 +1,12 @@
+  /* Estilos para el elemento con la clase "draggingSource" */
+  .draggingSource {
+    /* Establece la opacidad del elemento */
+    opacity: 0.3;
+  }
+  
+  /* Estilos para el elemento con la clase "dropTarget" */
+  .dropTarget {
+    /* Establece el color de fondo del elemento */
+    background-color: #8ee087;
+  }
+  

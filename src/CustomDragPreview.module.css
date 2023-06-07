@@ -1,0 +1,36 @@
+/* Estilos para el elemento con la clase "root" */
+.root {
+    /* Centra verticalmente el contenido */
+    align-items: "center";
+    /* Establece el color de fondo */
+    background-color: #1b72d6;
+    /* Establece el radio de borde */
+    border-radius: 4px;
+    /* Establece las sombras del cuadro */
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(0, 0, 0, 0.08);
+    /* Establece el color del texto */
+    color: #fff;
+    /* Establece el tipo de cuadrícula de visualización */
+    display: inline-grid;
+    /* Establece el tamaño de fuente */
+    font-size: 14px;
+    /* Establece el espacio entre elementos secundarios */
+    gap: 8px;
+    /* Establece el diseño de la cuadrícula con dos columnas automáticas */
+    grid-template-columns: auto auto;
+    /* Establece el relleno superior e inferior y el relleno izquierdo y derecho */
+    padding: 4px 8px;
+    /* Deshabilita los eventos de puntero */
+    pointer-events: none;
+  }
+  
+  /* Estilos para los elementos con las clases "icon" y "label" */
+  .icon,
+  .label {
+    /* Centra verticalmente el contenido */
+    align-items: center;
+    /* Establece el tipo de visualización */
+    display: flex;
+  }
+  
