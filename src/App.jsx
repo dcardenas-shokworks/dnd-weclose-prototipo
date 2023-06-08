@@ -75,8 +75,8 @@ export default function App() {
 
   };
   const roots = [500, 600] // prueba
-  const tree1 = getDescendants(treeData, 100);
-  const tree2 = getDescendants(treeData, 200);
+  const tree1 = getDescendants(treeData, 'Seller_Team');
+  const tree2 = getDescendants(treeData, 'Buyer_Team');
   const tree3 = getDescendants(treeData, 300);
   const tree4 = getDescendants(treeData, 400);
   // 2 Arboles de hitos por el momento
@@ -95,10 +95,10 @@ export default function App() {
           </div>
           <div className="flex justify-around">
             <div className="p-10 ">
-              <TreeView tree={tree1} onDrop={handleDrop} rootId={100} />
+              <TreeView tree={tree1} onDrop={handleDrop} rootId={"Seller_Team"} />
             </div>
             <div className="p-10" >
-              <TreeView tree={tree2} onDrop={handleDrop} rootId={200} />
+              <TreeView tree={tree2} onDrop={handleDrop} rootId={"Buyer_Team"} />
             </div>
           </div>
           <div className="" >

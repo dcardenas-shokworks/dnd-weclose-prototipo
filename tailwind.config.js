@@ -8,6 +8,9 @@ export default {
     extend: {
       colors: {
         primary: '#00B3DF',
+        gray:{
+          700: "#6A6A6A"
+        }
       },
       fontSize: {
         xxxs: ['6px', '10px'],
