@@ -1,94 +1,110 @@
 [
   {
     "id": 101,
-    "parent": 100,
+    "parent": "Seller_Team",
     "droppable": true,
-    "text": "1. ANTONIO SELLER (Team A) Leader",
-    "data": []
+    "text": "Seller",
+    "data": {
+      "user_assigned": {
+        "id": 12,
+        "full_name": "Aleja B",
+        "email": "ale@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract1",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
   },
   {
     "id": 102,
     "parent": 101,
     "droppable": true,
-    "text": "1-1 Usuario (Team A)",
-    "data": []
+    "text": "Attorney",
+    "data": {
+      "user_assigned": {
+        "id": 23,
+        "full_name": "Mark T",
+        "email": "mark@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract2",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
   },
   {
     "id": 103,
     "parent": 101,
     "droppable": true,
-    "text": "1-2 Usuario (Team A)",
-    "data": []
-  },
-  {
-    "id": 104,
-    "parent": 101,
-    "droppable": true,
-    "text": "2 Rocco Legal team leader (Team A-1)",
-    "data": []
-  },
-  {
-    "id": 105,
-    "parent": 104,
-    "droppable": true,
-    "text": "2-1 LAWYER (Team A-1)",
-    "data": []
-  },
-  {
-    "id": 106,
-    "parent": 104,
-    "droppable": true,
-    "text": "2-2 LAWYER (Team A-1)",
-    "data": []
-  },
-  {
-    "id": 107,
-    "parent": 104,
-    "droppable": true,
-    "text": "2-3 LAWYER (Team A-1)",
-    "data": []
+    "text": "Re Broker",
+    "data": {
+      "user_assigned": {
+        "id": 43,
+        "full_name": "Chirs C",
+        "email": "cris@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract4",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
   },
   {
     "id": 201,
-    "parent": 200,
+    "parent": "Buyer_Team",
     "droppable": true,
-    "text": "1. CARLOS BUYER (Team B)",
-    "data": []
+    "text": "Buyer",
+    "data": {
+      "user_assigned": {
+        "id": 122,
+        "full_name": "Aleja B",
+        "email": "ale@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract8",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
   },
   {
     "id": 202,
     "parent": 201,
     "droppable": true,
-    "text": "1-1 Usuario (Team B)",
-    "data": []
+    "text": "Buyer",
+    "data": {
+      "user_assigned": {
+        "id": 123,
+        "full_name": "Pedro P",
+        "email": "pedro@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract9",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
   },
   {
     "id": 203,
     "parent": 201,
     "droppable": true,
-    "text": "1-2 Usuario (Team B)",
-    "data": []
-  },
-  {
-    "id": 204,
-    "parent": 201,
-    "droppable": true,
-    "text": "2 Alejandra Legal team leader (Team B-1)",
-    "data": []
-  },
-  {
-    "id": 205,
-    "parent": 204,
-    "droppable": true,
-    "text": "2-1 LAWYER (Team B-1)",
-    "data": []
-  },
-  {
-    "id": 206,
-    "parent": 204,
-    "droppable": true,
-    "text": "2-2 lAWYER (Team B-1)",
-    "data": []
+    "text": "Broker",
+    "data": {}
   },
   {
     "id": 301,
