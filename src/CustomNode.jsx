@@ -14,7 +14,7 @@ export const CustomNode = ({ testIdPrefix = "", node, ...props }) => {
   };
 
   return (
-    <div className="flex m-2 min-w-[287px] w-full"
+    <div className="flex m-4 min-w-[287px] w-full"
       style={{ paddingInlineStart: indent }}
       data-testid={`${testIdPrefix}custom-node-${id}`}
     >
@@ -26,7 +26,7 @@ export const CustomNode = ({ testIdPrefix = "", node, ...props }) => {
         )}
       </div> */}
 
-      <div className="flex items-center justify-between bg-white rounded-sm px-2 w-full">
+      <div className="flex items-center justify-between bg-white px-2 w-full rounded shadow-[0px_0px_8px_rgba(121,121,121,0.15)]">
         <div className="px-[16px] py-[18.5px]">
         {
           node.data.user_assigned ? (
