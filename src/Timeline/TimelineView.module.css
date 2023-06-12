@@ -26,3 +26,13 @@
   content: var(--my-number);
   
 }
+
+.timelineTree {
+  display: flex;
+  width: 100%;
+}
+
+.timelineItemTree {
+  max-width: 100%;
+  width: 100%;
+}

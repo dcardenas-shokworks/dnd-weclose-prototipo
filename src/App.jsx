@@ -5,11 +5,20 @@ import sampleData from "./multiple-tree.json";
 import { TimelineView } from "./Timeline/TimelineView";
 import { TreeDeliverables } from "./Deliverable/TreeDeliverables";
 import { TreeDeliMoney } from "./DeliverableMoney/TreeDeliMoney";
-
+import useTreeData from "./hooks/useTreeData";
 
 
 export default function App() {
-
+const {
+  sellerTree, 
+  updateSellerTree, 
+  log:logs, 
+  bullerTree, 
+  updateBullerTree,
+  deliverablesTree, 
+  updateDeliverablesTree,
+  timelineTree
+} = useTreeData();
   const [treeData, setTreeData] = useState(sampleData);
   const [tLData, setTLData] = useState(sampleData);
   const [dayMilestone, setDayMilestone] = useState('');
@@ -109,16 +118,13 @@ export default function App() {
     });
   };
 
-  const tree1 = getDescendants(treeData, 'Seller_Team');
-  const tree2 = getDescendants(treeData, 'Buyer_Team');
-  const tree3 = getDescendants(treeData, 300);
+  const sellerTreeData = getDescendants(sellerTree, 'Seller_Team');
+  const bullerTreeData = getDescendants(bullerTree, 'Buyer_Team');
+  const deliverableTreeData = getDescendants(deliverablesTree, 300);
   const tree4 = getDescendants(treeData, 400);
-  const tLTree = getDescendants(treeTimeLine, 500);
+  const tLTree = getDescendants(timelineTree || [], 600);
 
-
-  // console.log(nameMilestone);
-  // console.log(dayMilestone);
-  console.log(treeTimeLine);
+  console.log({timelineTree});
 
   return (
     <div className="grid grid-rows-2 content-start  bg-gray-200">
@@ -127,15 +133,15 @@ export default function App() {
         {/* col 1 */}
         <div className="col-span-3">
           <div style={{ overflow: 'hidden', clear: 'both' }}>
-            <TimelineView tree={tLTree} onDrop={handleDrop} rootId={500} />
+            <TimelineView tree={tLTree} onDrop={handleDrop} rootId={600} />
             {/* <TimelineView tree={tLTree2} onDrop={handleDrop} rootId={500} /> */}
           </div>
           <div className="flex justify-around">
             <div className="p-10 ">
-              <TreeView tree={tree1} onDrop={handleDrop} rootId={"Seller_Team"} />
+              <TreeView tree={sellerTreeData} onDrop={updateSellerTree} rootId={"Seller_Team"} />
             </div>
             <div className="p-10" >
-              <TreeView tree={tree2} onDrop={handleDrop} rootId={"Buyer_Team"} />
+              <TreeView tree={bullerTreeData} onDrop={updateBullerTree} rootId={"Buyer_Team"} />
             </div>
           </div>
           <div className="" >
@@ -144,7 +150,7 @@ export default function App() {
         </div>
         {/* Col 2 */}
         <div className="mt-10"/*{styles.column}*/>
-          <TreeDeliverables tree={tree3} onDrop={handleDrop} rootId={300} />
+          <TreeDeliverables tree={deliverableTreeData} onDrop={updateDeliverablesTree} rootId={300} />
         </div>
 
       </div>
@@ -180,10 +186,11 @@ export default function App() {
 
         <div className="h-40 m-4 bg-slate-400">
           <span className="font-bold text-black p-4">LOGS:</span>
-          {log.map(itemLog => (
+          {logs.map(itemLog => (
             <ul key={itemLog?.id} className="mx-4">
               <span className="font-bold">{itemLog?.id + 1}- Source:</span><span> {itemLog?.source}</span>
               <span className="font-bold"> Destination: </span><span> {itemLog.destination}</span>
+              <span className="font-bold"> Tree Destination: </span><span> {itemLog.tree}</span>
             </ul>
           ))}
         </div>

@@ -1,0 +1,48 @@
+[
+  {
+    "id": 201,
+    "parent": "Buyer_Team",
+    "droppable": true,
+    "text": "Buyer",
+    "data": {
+      "user_assigned": {
+        "id": 122,
+        "full_name": "Aleja B",
+        "email": "ale@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract8",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 202,
+    "parent": 201,
+    "droppable": true,
+    "text": "Buyer",
+    "data": {
+      "user_assigned": {
+        "id": 123,
+        "full_name": "Pedro P",
+        "email": "pedro@gmail.com",
+        "deliverables": [
+          {
+            "id":89,
+            "name": "Contract9",
+            "status": "In_Process"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 203,
+    "parent": 201,
+    "droppable": true,
+    "text": "Broker",
+    "data": {}
+  }]
