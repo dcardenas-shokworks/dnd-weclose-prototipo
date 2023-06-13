@@ -21,54 +21,38 @@ import {
     Box
 } from "@mui/material";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ClearIcon from '@mui/icons-material/Clear';
 import styles from "./AddDialog.module.css";
 
 
 export const AddMilestone = (props) => {
-    const [deliverableType, setDeliverableType] = useState(0)
-    const [text, setText] = useState("");
-    const [fileType, setFileType] = useState("text");
-    const [parent, setParent] = useState(0);
-    const [droppable, setDroppable] = useState(true);
 
-    const [openPrincipalModal, setOpenPrincipalModal] = useState(true);
-    const [descriptionDeliFounds, setDescriptionDeliFounds] = useState("")
-    const [amountDeliFounds, setAmountDeliFounds] = useState("")
+    const [days, setDays] = useState(0);
+    const [nameMilestone, setNameMilestone] = useState("")
+    const [dateMilestone, setDateMilestone] = useState("")
     const [openOptions, setOpenOptions] = useState(false)
 
-    const handleChangeDescription = (e) => {
-        setDescriptionDeliFounds(e.target.value);
+    const handleChangeName = (e) => {
+        setNameMilestone(e.target.value);
     };
 
-    const handleChangeAmount = (e) => {
-        setAmountDeliFounds(e.target.value);
+    const handleChangeDate = (e) => {
+        setDateMilestone(e.target.value);
     };
 
-    const handleChangeNameDeliverable = (e) => {
-        setText(e.target.value);
-    };
-
-    const handleChangeParent = (e) => {
-        setParent(Number(e.target.value));
+  
+    const handleChangeDays = (e) => {
+        setDays(Number(e.target.value));
     };
 
 
-    const handleOpenPrincipalModal = () => {
-        setOpenPrincipalModal(true);
-    };
-
-    const handleClosePrincipalModal = () => {
-        setOpenPrincipalModal(false);
-    };
-
-    console.log(parent);
-    console.log(text);
-    console.log(droppable);
     return (
-        <>
-
+        <>  
             {/* Modal 1 */}
-            <Dialog open={openPrincipalModal} onClose={props.onClose} fullWidth={true} maxWidth="xs">
+            <Dialog open={true} onClose={props.onClose} fullWidth={true} maxWidth="xs" disableEscapeKeyDown >
+                <ClearIcon className="bg-black rounded-full text-white absolute right-0" 
+                            sx={{ fontSize: 18, cursor: "pointer" }}
+                            onClick={props.onClose}/>
                 <div className="px-10 py-5">
                     <DialogTitle>
                         <Typography className="text-black" variant="h6" style={{ fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '24px' }}>
@@ -83,8 +67,9 @@ export const AddMilestone = (props) => {
                                 aria-describedby="outlined-weight-helper-text"
                                 inputProps={{
                                     'aria-label': 'weight',
-                                }}
-                            // onChange={handleChangeDescription}
+                                }} 
+                                value={nameMilestone}
+                                onChange={handleChangeName}
                             />
                         </FormControl>
                         <FormControl variant="outlined">
@@ -96,7 +81,8 @@ export const AddMilestone = (props) => {
                                 inputProps={{
                                     'aria-label': 'weight',
                                 }}
-                            // onChange={handleChangeDescription}
+                                value={days}
+                                onChange={handleChangeDays}
                             />
                         </FormControl>
                         <div className="flex justify-between">
@@ -116,7 +102,8 @@ export const AddMilestone = (props) => {
                                     inputProps={{
                                         'aria-label': 'weight',
                                     }}
-                                // onChange={handleChangeDescription}
+                                    value={dateMilestone}
+                                    onChange={handleChangeDate}
                                 />
                                 <span className="text-xs text-gray-800 mt-4">Days</span>
                                 <OutlinedInput
@@ -126,7 +113,8 @@ export const AddMilestone = (props) => {
                                     inputProps={{
                                         'aria-label': 'weight',
                                     }}
-                                // onChange={handleChangeDescription}
+                                    value={days}
+                                    onChange={handleChangeDays}
                                 />
                             </FormControl>
                         }
@@ -137,7 +125,7 @@ export const AddMilestone = (props) => {
                             <Button
                                 className="bg-primary w-full"
                                 variant="contained"
-                                disabled={parent === 0}
+                                disabled={ nameMilestone === '' || days === 0 }
                             // onClick={}
                             >
                                 Continue
