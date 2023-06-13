@@ -1,9 +1,17 @@
 .content {
     display: grid;
     gap: 16px;
+    width: 40vw;
   }
   
   .select {
     width: 100%;
+    border: 1px solid #00B3DF;
   }
   
+  .container_button{
+    text-align: center;
+  }
+  .button{
+    background-color: #00B3DF;
+  }

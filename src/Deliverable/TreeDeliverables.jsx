@@ -4,6 +4,7 @@ import { CustomNodeDeliverables } from "./CustomNodeDeliverables";
 import { CustomDragPreview } from "../CustomDragPreview";
 import styles from "./TreeDeliverables.module.css";
 import { AddDialog } from "./AddDialog";
+import { AddDeliverable } from "./AddDeliverable";
 
 // Obtiene el ultimo Id del arbol de entregables documentos
 const getLastId = (treeData) => {
@@ -81,7 +82,7 @@ export const TreeDeliverables = (props) => {
         Add Deliverable
       </button>
       {open && (
-        <AddDialog
+        <AddDeliverable
           tree={props.tree}
           onClose={handleCloseDialog}
           onSubmit={handleSubmit}

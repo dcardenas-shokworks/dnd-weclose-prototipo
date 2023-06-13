@@ -11,7 +11,8 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Typography
 } from "@mui/material";
 import styles from "./AddDialog.module.css";
 
@@ -36,10 +37,16 @@ export const AddDialog = (props) => {
   const handleChangeFileType = (e) => {
     setFileType(e.target.value);
   };
-
+console.log(parent);
+console.log(text);
+console.log(droppable);
   return (
     <Dialog open={true} onClose={props.onClose}>
-      <DialogTitle>Add New Node</DialogTitle>
+      <DialogTitle>
+        <Typography className="text-black" variant="h6" style={{ fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '24px' }}>
+          New Deliverable
+        </Typography>
+      </DialogTitle>
       <DialogContent className={styles.content}>
         <div>
           <TextField label="Text" onChange={handleChangeText} value={text} />
