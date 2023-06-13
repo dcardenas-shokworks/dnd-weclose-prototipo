@@ -1,0 +1,27 @@
+[
+  {
+    "date": "2023/06/15",
+    "isMiliestone": false,
+    "isDeliverable": true
+  },
+  {
+    "date": "2023/06/18",
+    "isMiliestone": false,
+      "isDeliverable": true
+  },
+  {
+    "date": "2023/06/18",
+    "isMiliestone": false,
+      "isDeliverable": true
+  },
+  {
+    "date": "2023/07/23",
+    "isMiliestone": false,
+      "isDeliverable": true
+  },
+  {
+    "date": "2023/07/29",
+    "isMiliestone": true,
+    "isDeliverable": false
+  }
+]

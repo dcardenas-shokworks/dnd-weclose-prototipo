@@ -24,8 +24,9 @@ export const TimelineView = (props) => {
       {/* <h2 onClick={handleOpenAll} className="text-center mb-10">TIMELINE</h2> */}
       <div className="flex col-span-5">
         {/* {props.tree.map((elem, index) => ( */}
-        <div className="flex items-center justify-between border-black border-x-2 border-x-black relative pr-1 w-full">
+        <div className="flex items-center justify-between border-x-2 border-gray-200 relative w-full  h-[18px] pt-[9px]">
           <div className="absolute -bottom-4 -left-1 text-xs">0</div>
+
           <Tree
             listComponent={"div"}
             listItemComponent={"div"}
@@ -37,12 +38,15 @@ export const TimelineView = (props) => {
             classes={{
               root: styles.treeRoot,
               draggingSource: styles.draggingSource,
-              dropTarget: styles.dropTarget
+              dropTarget: styles.dropTarget,
+              container: styles.timelineTree,
+              listItem: styles.timelineItemTree
             }}
             sort={false}
             initialOpen={true}
             render={(node, options) => <CustomNodeTimeline node={node} {...options} tree={props.tree} />}
           />
+  
           <div className="absolute -bottom-4 -right-2 text-xs">{props.tree.length - contador}</div>
         </div>
       </div>
