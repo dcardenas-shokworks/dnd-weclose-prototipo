@@ -3,11 +3,12 @@ import { Tree } from "@minoru/react-dnd-treeview";
 import { CustomNodeTimeline } from "./CustomNodeTimeline";
 // import { CustomDragPreview } from "./CustomDragPreview";
 import styles from "./TimelineView.module.css";
+import { AddMilestone } from "./AddMilestone";
 
 
 export const TimelineView = (props) => {
   
-  const [disableDrag, setDisableDrag] = useState(false);
+  const [open, setOpen] = useState(false); // Estado maneja visualización de modal
 
   let contador = 0;
    props.tree.map(node => {
@@ -18,6 +19,17 @@ export const TimelineView = (props) => {
 
   const ref = useRef(null);
   const handleOpenAll = () => { ref.current?.openAll(); }
+
+  // Abre modal de agregar entregable
+  const handleOpenDialog = () => {
+    setOpen(true);
+  };
+
+  // Cierra modal
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
 
   return (
     <div className="grid grid-cols-6 mt-10  mx-2 relative p-6  bg-white w-auto h-20 rounded-md">
@@ -50,7 +62,14 @@ export const TimelineView = (props) => {
           <div className="absolute -bottom-4 -right-2 text-xs">{props.tree.length - contador}</div>
         </div>
       </div>
-      <button className="justify-self-end bg-primary text-white w-16 h-8  rounded-md text-3xl">+</button>
+      <button onClick={handleOpenDialog} className="justify-self-end bg-primary text-white w-16 h-8  rounded-md text-3xl">+</button>
+      {open && (
+        <AddMilestone
+          // tree={props.tree}
+          onClose={handleCloseDialog}
+          // onSubmit={handleSubmit}
+        />
+      )}
     </div>
   )
 };
