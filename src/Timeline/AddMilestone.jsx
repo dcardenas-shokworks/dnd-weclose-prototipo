@@ -45,11 +45,13 @@ export const AddMilestone = (props) => {
         setDays(Number(e.target.value));
     };
 
-
+    const handleBackdropClick = (event) => {
+        event.stopPropagation();
+      };
     return (
         <>  
             {/* Modal 1 */}
-            <Dialog open={true} onClose={props.onClose} fullWidth={true} maxWidth="xs" disableEscapeKeyDown >
+            <Dialog open={true} onClose={props.onClose} fullWidth={true} maxWidth="xs" disableEscapeKeyDown onClick={handleBackdropClick}>
                 <ClearIcon className="bg-black rounded-full text-white absolute right-0" 
                             sx={{ fontSize: 18, cursor: "pointer" }}
                             onClick={props.onClose}/>
