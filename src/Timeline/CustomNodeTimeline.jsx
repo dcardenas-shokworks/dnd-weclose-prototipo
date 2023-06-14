@@ -25,7 +25,7 @@ export const CustomNodeTimeline = (props) => {
   // console.log(props);
   return (
 
-    <div className="relative w-full" onClick={handleToggle}>
+    <div className="relative w-full group" onClick={handleToggle} style={{"--my-number": "85"}}>
 
       {/* Si droppable es true el nodo es un día y no muestra el text, si es false es un entregable (hijo) y lo muestra  */}
       <div className={`relative ${(props.node.droppable) ? "text-xs invisible" :
@@ -46,18 +46,24 @@ export const CustomNodeTimeline = (props) => {
           {
             props.node.data.isDeliverable && (
               <div className="flex flex-col items-center absolute -bottom-[9px]">
-                <p className="text-xs text-gray-700 pt-3" title={props.node.text}>{props.node.data.contDay}</p>
+                <p className="text-xs text-gray-700 pt-3" title={`${props.node.text} - ${props.node.data.deliverables.length} entregables`}>{props.node.data.contDay}</p>
                 <div className="h-[18px] w-[2px] bg-gray-700" />
 
               </div>
             )
           }
+          {/* Muestra el numero de día al hacer over en el momento del drag and drop */}
+          {/*Todo: si no se coloca algo en el nodo lo que se le coloque en el isDropTarget quedara activo */}
+        
+        {/* <div className={`absolute -top-[25px] right-2 text-[red] text-lg  ${props.isDropTarget ? 'visible' : 'hidden'} `}>
+          {props.tree.indexOf(props.node) + 1}
+        </div> */}
+        {/* <div className={`absolute -top-[25px] right-2 text-[red] text-lg hidden group-hover:block group-focus:block group-active:block`}>
+          {props.tree.indexOf(props.node) + 1}
+        </div> */}
         </div>
 
-        {/* Muestra el numero de día al hacer over en el momento del drag and drop */}
-        <div className={`absolute top-0 right-2 text-red text-xxs ${props.isDropTarget ? 'text-xs visible' : 'hidden'} `}>
-          {props.tree.indexOf(props.node) + 1}
-        </div>
+        
 
 
 

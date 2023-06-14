@@ -10,20 +10,20 @@ import { AddDeliverable } from "./AddDeliverable";
 
 
 export default function App() {
-  const {
-    sellerTree,
-    updateSellerTree,
-    log: logs,
-    bullerTree,
-    updateBullerTree,
-    deliverablesTree,
-    updateDeliverablesTree,
-    deliverablesFoundsTree,
+const {
+  sellerTree, 
+  updateSellerTree, 
+  log:logs, 
+  bullerTree, 
+  updateBullerTree,
+  deliverablesTree, 
+  updateDeliverablesTree,
+  deliverablesFoundsTree,
     addNodeDeliverable,
-    timelineTree
-  } = useTreeData();
-  const [treeData, setTreeData] = useState(sampleData);
-  const [tLData, setTLData] = useState(sampleData);
+  timelineTree,
+  updatetimelineTree
+} = useTreeData();
+
   const [dayMilestone, setDayMilestone] = useState('');
   const [nameMilestone, setNameMilestone] = useState('')
   const [log, setLog] = useState([]);
@@ -103,26 +103,6 @@ export default function App() {
       destination: dropTarget?.text,
     }]);
     setLog(newLog);
-
-    // Agrega la información del entregable que se suelta en un nodo día del timeline
-    tLData.map((node, index) => {
-      if (node.id === dragSourceId) {
-        const newDeliverableData = {
-          deliverable: {
-            id: node.id,
-            name: node.text,
-          }
-        }
-        treeTimeLine.map((nodeDay, indexNodeDay) => {
-          if (nodeDay.id === dropTargetId) {
-            const objetoExistente = nodeDay;
-            objetoExistente.data = Object.assign({}, objetoExistente.data, newDeliverableData);
-            nodeDay = objetoExistente;
-            console.log("Deliverable: ", nodeDay);
-          }
-        });
-      }
-    });
   };
 
   // Abre modal de agregar entregable
@@ -135,20 +115,7 @@ export default function App() {
     setOpen(false);
   };
 
-  //Agrega el nuevo entregable (nodo) en el árbol
-  const handleSubmit = (newNode) => {
-    // const lastId = getLastId(treeData) + 1;
 
-    // setTreeData([
-    //   ...treeData,
-    //   {
-    //     id: lastId,
-    //     ...newNode
-    //   }
-    // ]);
-
-    setOpen(false);
-  };
 
   const sellerTreeData = getDescendants(sellerTree, 'Seller_Team');
   const bullerTreeData = getDescendants(bullerTree, 'Buyer_Team');
@@ -165,8 +132,7 @@ export default function App() {
         {/* col 1 */}
         <div className="col-span-3">
           <div style={{ overflow: 'hidden', clear: 'both' }}>
-            <TimelineView tree={tLTree} onDrop={handleDrop} rootId={600} />
-            {/* <TimelineView tree={tLTree2} onDrop={handleDrop} rootId={500} /> */}
+            <TimelineView tree={tLTree} onDrop={updatetimelineTree} rootId={600} />
           </div>
           <div className="flex justify-around">
             <div className="p-10 ">
