@@ -129,6 +129,31 @@ const useTreeData = () => {
     }
 
   };
+
+  const updatetimelineTree = (newTree, { dragSourceId, dropTargetId, dragSource, dropTarget }) => {
+    console.log("SOURCE:", dragSourceId, " DROPTARGET:", dropTargetId, "updatetimelineTree");
+ // Actualiza el log al hacer dnd
+    const newLog = ([...log, {
+      id: log.length,
+      source: dragSource.text,
+      destination: dropTarget?.text,
+      tree: "TimelineTree"
+    }]);
+    setLog(newLog);
+    const newTimeline = timeline.map(item => {
+      return item.data.date === dropTarget.data.date ? {
+        ...item,
+        data: {
+          ...item.data,
+          isDeliverable: true,
+          deliverables: [...item.data.deliverables, dragSource]
+        }
+      } :
+      item;
+    })
+    console.log({dragSource, dropTarget})
+    setTimeLine(newTimeline)
+  };
   console.log(deliverables);
   console.log(deliverablesFounds);
   return {
@@ -140,6 +165,7 @@ const useTreeData = () => {
     updateSellerTree,
     updateBullerTree,
     updateDeliverablesTree,
+    updatetimelineTree,
     addNodeDeliverable,
     log
   };
