@@ -1,0 +1,68 @@
+[
+    {
+        "id": 401,
+        "parent": 400,
+        "droppable": true,
+        "text": "$50k",
+        "data": [
+            {
+                "name": "1er Deposit"
+            }
+        ]
+    },
+    {
+        "id": 402,
+        "parent": 400,
+        "droppable": true,
+        "text": "$100k",
+        "data": [
+            {
+                "name": "2do Deposit"
+            }
+        ]
+    },
+    {
+        "id": 403,
+        "parent": 400,
+        "droppable": true,
+        "text": "50K",
+        "data": [
+            {
+                "name": "EXTENSION"
+            }
+        ]
+    },
+    {
+        "id": 404,
+        "parent": 400,
+        "droppable": true,
+        "text": "15M",
+        "data": [
+            {
+                "name": "PURCHASE"
+            }
+        ]
+    },
+    {
+        "id": 405,
+        "parent": 400,
+        "droppable": true,
+        "text": "7M",
+        "data": [
+            {
+                "name": "DEBT"
+            }
+        ]
+    },
+    {
+        "id": 406,
+        "parent": 400,
+        "droppable": true,
+        "text": "5M",
+        "data": [
+            {
+                "name": "EQUITY"
+            }
+        ]
+    }
+]

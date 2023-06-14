@@ -6,19 +6,22 @@ import { TimelineView } from "./Timeline/TimelineView";
 import { TreeDeliverables } from "./Deliverable/TreeDeliverables";
 import { TreeDeliMoney } from "./DeliverableMoney/TreeDeliMoney";
 import useTreeData from "./hooks/useTreeData";
+import { AddDeliverable } from "./AddDeliverable";
 
 
 export default function App() {
-const {
-  sellerTree, 
-  updateSellerTree, 
-  log:logs, 
-  bullerTree, 
-  updateBullerTree,
-  deliverablesTree, 
-  updateDeliverablesTree,
-  timelineTree
-} = useTreeData();
+  const {
+    sellerTree,
+    updateSellerTree,
+    log: logs,
+    bullerTree,
+    updateBullerTree,
+    deliverablesTree,
+    updateDeliverablesTree,
+    deliverablesFoundsTree,
+    addNodeDeliverable,
+    timelineTree
+  } = useTreeData();
   const [treeData, setTreeData] = useState(sampleData);
   const [tLData, setTLData] = useState(sampleData);
   const [dayMilestone, setDayMilestone] = useState('');
@@ -26,6 +29,7 @@ const {
   const [log, setLog] = useState([]);
   const [dateInitialProject, setDateInitialProject] = useState('')
   const [treeTimeLine, setTreeTimeLine] = useState([]);
+  const [open, setOpen] = useState(false); // Estado maneja visualización de modal
 
   // Da formato dd/mm/yyyy a la fecha dada
   const formatearFecha = (fechaSinFormato) => {
@@ -85,6 +89,9 @@ const {
     }
     return fechas;
   };
+
+
+  // Función que controla el dnd
   const handleDrop = (newTree, { dragSourceId, dropTargetId, dragSource, dropTarget }) => {
     console.log("SOURCE:", dragSourceId, " DROPTARGET:", dropTargetId);
 
@@ -118,13 +125,38 @@ const {
     });
   };
 
+  // Abre modal de agregar entregable
+  const handleOpenDialog = () => {
+    setOpen(true);
+  };
+
+  // Cierra modal
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
+  //Agrega el nuevo entregable (nodo) en el árbol
+  const handleSubmit = (newNode) => {
+    // const lastId = getLastId(treeData) + 1;
+
+    // setTreeData([
+    //   ...treeData,
+    //   {
+    //     id: lastId,
+    //     ...newNode
+    //   }
+    // ]);
+
+    setOpen(false);
+  };
+
   const sellerTreeData = getDescendants(sellerTree, 'Seller_Team');
   const bullerTreeData = getDescendants(bullerTree, 'Buyer_Team');
   const deliverableTreeData = getDescendants(deliverablesTree, 300);
-  const tree4 = getDescendants(treeData, 400);
+  const deliverablesFoundsTreeData = getDescendants(deliverablesFoundsTree, 400);
   const tLTree = getDescendants(timelineTree || [], 600);
 
-  console.log({timelineTree});
+  console.log({ timelineTree });
 
   return (
     <div className="grid grid-rows-2 content-start  bg-gray-200">
@@ -145,12 +177,23 @@ const {
             </div>
           </div>
           <div className="" >
-            <TreeDeliMoney tree={tree4} onDrop={handleDrop} rootId={400} />
+            <TreeDeliMoney tree={deliverablesFoundsTreeData} onDrop={handleDrop} rootId={400} />
           </div>
         </div>
         {/* Col 2 */}
-        <div className="mt-10"/*{styles.column}*/>
+        <div className="flex flex-col justify-between mt-10 bg-white rounded-md"/*{styles.column}*/>
+
           <TreeDeliverables tree={deliverableTreeData} onDrop={updateDeliverablesTree} rootId={300} />
+          <button onClick={handleOpenDialog} className="text-white bg-primary font-bold p-2 m-2 rounded-md">
+            Add Deliverable
+          </button>
+          {open && (
+            <AddDeliverable
+              onClose={handleCloseDialog}
+              onSubmit={addNodeDeliverable}
+            />
+          )}
+
         </div>
 
       </div>

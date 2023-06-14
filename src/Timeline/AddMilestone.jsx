@@ -40,21 +40,21 @@ export const AddMilestone = (props) => {
         setDateMilestone(e.target.value);
     };
 
-  
+
     const handleChangeDays = (e) => {
         setDays(Number(e.target.value));
     };
 
     const handleBackdropClick = (event) => {
         event.stopPropagation();
-      };
+    };
     return (
-        <>  
+        <>
             {/* Modal 1 */}
             <Dialog open={true} onClose={props.onClose} fullWidth={true} maxWidth="xs" disableEscapeKeyDown onClick={handleBackdropClick}>
-                <ClearIcon className="bg-black rounded-full text-white absolute right-0" 
-                            sx={{ fontSize: 18, cursor: "pointer" }}
-                            onClick={props.onClose}/>
+                <ClearIcon className="bg-black rounded-full text-white absolute right-0"
+                    sx={{ fontSize: 18, cursor: "pointer" }}
+                    onClick={props.onClose} />
                 <div className="px-10 py-5">
                     <DialogTitle>
                         <Typography className="text-black" variant="h6" style={{ fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '24px' }}>
@@ -69,7 +69,7 @@ export const AddMilestone = (props) => {
                                 aria-describedby="outlined-weight-helper-text"
                                 inputProps={{
                                     'aria-label': 'weight',
-                                }} 
+                                }}
                                 value={nameMilestone}
                                 onChange={handleChangeName}
                             />
@@ -96,38 +96,43 @@ export const AddMilestone = (props) => {
                                 }} />
                         </div>
                         {openOptions &&
-                            <FormControl variant="outlined">
-                                <span className="text-xs text-gray-800">From Date</span>
-                                <OutlinedInput
-                                    id="outlined-adornment-weight"
-                                    aria-describedby="outlined-weight-helper-text"
-                                    inputProps={{
-                                        'aria-label': 'weight',
-                                    }}
-                                    value={dateMilestone}
-                                    onChange={handleChangeDate}
-                                />
-                                <span className="text-xs text-gray-800 mt-4">Days</span>
-                                <OutlinedInput
-                                    id="outlined-adornment-weight"
-                                    type="number"
-                                    aria-describedby="outlined-weight-helper-text"
-                                    inputProps={{
-                                        'aria-label': 'weight',
-                                    }}
-                                    value={days}
-                                    onChange={handleChangeDays}
-                                />
-                            </FormControl>
+                            <>
+                                <FormControl variant="outlined">
+                                    <span className="text-xs text-gray-800">From Date</span>
+                                    <OutlinedInput
+                                        id="outlined-adornment-weight"
+                                        type="date"
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            'aria-label': 'weight',
+                                        }}
+                                        value={dateMilestone}
+                                        onChange={handleChangeDate}
+                                    />
+                                </FormControl>
+                                <FormControl variant="outlined">
+                                    <span className="text-xs text-gray-800">Days</span>
+                                    <OutlinedInput
+                                        id="outlined-adornment-weight"
+                                        type="number"
+                                        aria-describedby="outlined-weight-helper-text"
+                                        inputProps={{
+                                            'aria-label': 'weight',
+                                        }}
+                                        value={days}
+                                        onChange={handleChangeDays}
+                                    />
+                                </FormControl>
+                            </>
                         }
                     </DialogContent>
-                    <DialogActions>
+                    <DialogActions className={styles.content}>
                         {/* <Button onClick={props.onClose}>Cancel</Button> */}
-                        <Container >
-                            <Button
+                        <Container  >
+                            <Button 
                                 className="bg-primary w-full"
                                 variant="contained"
-                                disabled={ nameMilestone === '' || days === 0 }
+                                disabled={nameMilestone === '' || days === 0}
                             // onClick={}
                             >
                                 Continue

@@ -21,6 +21,7 @@ import {
     Box
 } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ClearIcon from '@mui/icons-material/Clear';
 import { NumericFormat } from 'react-number-format';
 import styles from "./AddDialog.module.css";
 
@@ -106,13 +107,20 @@ export const AddDeliverable = (props) => {
         setOpenPrincipalModal(false);
     };
 
+    const handleBackdropClick = (event) => {
+        event.stopPropagation();
+    };
+
     console.log(parent);
     console.log(text);
     console.log(droppable);
     return (
         <>
             {/* Modal 3 Deliverables Founds */}
-            <Dialog open={openThirdModal} onClose={handleCloseThirdModal} fullWidth={true} maxWidth="xs">
+            <Dialog open={openThirdModal} onClose={handleCloseThirdModal} fullWidth={true} maxWidth="xs" disableEscapeKeyDown onClick={handleBackdropClick}>
+                <ClearIcon className="bg-black rounded-full text-white absolute right-0"
+                    sx={{ fontSize: 18, cursor: "pointer" }}
+                    onClick={props.onClose} />
                 <div className="flex flex-col py-5 px-10">
                     <DialogTitle>
                         <div className="flex items-center gap-4">
@@ -144,6 +152,7 @@ export const AddDeliverable = (props) => {
                                     inputProps={{
                                         'aria-label': 'weight',
                                     }}
+                                    value={descriptionDeliFounds}
                                     onChange={handleChangeDescription}
                                 />
                             </FormControl>
@@ -183,16 +192,17 @@ export const AddDeliverable = (props) => {
                                 className="bg-primary w-full"
                                 variant="contained"
                                 disabled={descriptionDeliFounds === "" || amountDeliFounds === ""}
-                                onClick={() =>
+                                onClick={() => {
                                     props.onSubmit({
                                         parent,
                                         droppable,
-                                        text,
+                                        text: amountDeliFounds,
                                         data: {
-                                            fileType
+                                            descriptionDeliFounds
                                         }
-                                    })
-                                }
+                                    });
+                                    props.onClose();
+                                }}
                             >
                                 Continue
                             </Button>
@@ -202,7 +212,10 @@ export const AddDeliverable = (props) => {
             </Dialog>
 
             {/* Modal 2 Deliverables Documents */}
-            <Dialog open={openSecondModal} onClose={handleCloseSecondModal} fullWidth={true} maxWidth="xs" >
+            <Dialog open={openSecondModal} onClose={handleCloseSecondModal} fullWidth={true} maxWidth="xs" disableEscapeKeyDown onClick={handleBackdropClick}>
+                <ClearIcon className="bg-black rounded-full text-white absolute right-0"
+                    sx={{ fontSize: 18, cursor: "pointer" }}
+                    onClick={props.onClose} />
                 <div className="flex flex-col px-10 py-5">
                     <DialogTitle>
                         <div className="flex items-center gap-4">
@@ -248,7 +261,7 @@ export const AddDeliverable = (props) => {
                                 className="bg-primary w-full"
                                 variant="contained"
                                 disabled={text === ""}
-                                onClick={() =>
+                                onClick={() => {
                                     props.onSubmit({
                                         parent,
                                         droppable,
@@ -256,8 +269,9 @@ export const AddDeliverable = (props) => {
                                         data: {
                                             fileType
                                         }
-                                    })
-                                }
+                                    });
+                                    props.onClose();
+                                }}
                             >
                                 Continue
                             </Button>
@@ -268,62 +282,65 @@ export const AddDeliverable = (props) => {
             </Dialog>
 
             {/* Modal 1 */}
-            <Dialog open={openPrincipalModal} onClose={props.onClose} fullWidth={true} maxWidth="xs">
+            <Dialog open={openPrincipalModal} onClose={props.onClose} fullWidth={true} maxWidth="xs" disableEscapeKeyDown onClick={handleBackdropClick}>
+                <ClearIcon className="bg-black rounded-full text-white absolute right-0"
+                    sx={{ fontSize: 18, cursor: "pointer" }}
+                    onClick={props.onClose} />
                 <div className="px-10 py-5">
-                <DialogTitle>
-                    <Typography className="text-black" variant="h6" style={{ fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '24px' }}>
-                        New Deliverable
-                    </Typography>
-                </DialogTitle>
-                <DialogContent className={styles.content}>
-                    <div>
-                        <FormControl className={styles.select}>
-                            <span className="text-xs text-gray-800">Deliverable</span>
-                            <Select
-                                displayEmpty={true}
-                                value={parent}
-                                onChange={handleChangeParent}
-                                input={<OutlinedInput />}
-                                renderValue={(selected) => {
-                                    if (selected === 0) {
-                                        return <span className="text-gray-500">Select type of deliverable</span>;
-                                    } else if (selected === 300) {
-                                        return <span>Document</span>;
-                                    } else {
-                                        return <span>Funds</span>;
-                                    }
-                                }}>
-                                <MenuItem disabled value="">
-                                    <em>Select type of deliverable</em>
-                                </MenuItem>
-                                <MenuItem value={300}>Document</MenuItem>
-                                <MenuItem value={400}>Funds</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </div>
+                    <DialogTitle>
+                        <Typography className="text-black" variant="h6" style={{ fontFamily: 'sans-serif', fontWeight: 'bold', fontSize: '24px' }}>
+                            New Deliverable
+                        </Typography>
+                    </DialogTitle>
+                    <DialogContent className={styles.content}>
+                        <div>
+                            <FormControl className={styles.select}>
+                                <span className="text-xs text-gray-800">Deliverable</span>
+                                <Select
+                                    displayEmpty={true}
+                                    value={parent}
+                                    onChange={handleChangeParent}
+                                    input={<OutlinedInput />}
+                                    renderValue={(selected) => {
+                                        if (selected === 0) {
+                                            return <span className="text-gray-500">Select type of deliverable</span>;
+                                        } else if (selected === 300) {
+                                            return <span>Document</span>;
+                                        } else {
+                                            return <span>Funds</span>;
+                                        }
+                                    }}>
+                                    <MenuItem disabled value="">
+                                        <em>Select type of deliverable</em>
+                                    </MenuItem>
+                                    <MenuItem value={300}>Document</MenuItem>
+                                    <MenuItem value={400}>Funds</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>
 
-                </DialogContent>
-                <DialogActions>
-                    {/* <Button onClick={props.onClose}>Cancel</Button> */}
-                    <Container className={styles.container_button}>
-                        <Button
-                            className="bg-primary w-full"
-                            variant="contained"
-                            disabled={parent === 0}
-                            onClick={() => {
-                                if (parent === 300) {
-                                    handleClosePrincipalModal(); // Cierra el primer modal 
-                                    handleOpenSecondModal(); // Abre el segundo modal
-                                } else {
-                                    handleClosePrincipalModal(); // Cierra el primer modal 
-                                    handleOpenThirdModal(); // Abre el tercer modal 
-                                }
-                            }}
-                        >
-                            Continue
-                        </Button>
-                    </Container>
-                </DialogActions>
+                    </DialogContent>
+                    <DialogActions>
+                        {/* <Button onClick={props.onClose}>Cancel</Button> */}
+                        <Container className={styles.container_button}>
+                            <Button
+                                className="bg-primary w-full"
+                                variant="contained"
+                                disabled={parent === 0}
+                                onClick={() => {
+                                    if (parent === 300) {
+                                        handleClosePrincipalModal(); // Cierra el primer modal 
+                                        handleOpenSecondModal(); // Abre el segundo modal
+                                    } else {
+                                        handleClosePrincipalModal(); // Cierra el primer modal 
+                                        handleOpenThirdModal(); // Abre el tercer modal 
+                                    }
+                                }}
+                            >
+                                Continue
+                            </Button>
+                        </Container>
+                    </DialogActions>
                 </div>
             </Dialog>
         </>
